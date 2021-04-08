@@ -19,6 +19,11 @@ const ProductsSchema = mongoose.Schema({
         type: Number,
         required: true,
       },
+    id_seller : {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
+    },
+
     img : {
         type : String,
         require : true

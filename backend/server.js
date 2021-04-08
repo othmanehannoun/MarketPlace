@@ -9,7 +9,8 @@ const server = express();
 var indexRouter = require('./routes/index');
 var userRouter = require('./routes/User');
 var productRouter = require('./routes/Product');
-
+var adminRouter = require('./routes/Admin')
+var sellerRouter = require('./routes/Seller')
 
 server.use(express.json());
 server.use(cors());
@@ -20,6 +21,8 @@ server.use(express.static(path.join(__dirname, 'public')));
 server.use('/', indexRouter);
 server.use('/user', userRouter);
 server.use('/products', productRouter);
+server.use('/admin', adminRouter)
+server.use('/seller', sellerRouter)
 
 
 // error handler

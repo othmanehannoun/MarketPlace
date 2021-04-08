@@ -49,11 +49,6 @@ function Product (){
                     )
                   }
 
-                    
-               
-                
-
-                    
                     )
                 }
       

@@ -51,7 +51,7 @@ function ProductDetails({match},props){
                     <div className="col-lg-4 text-center border-right border-secondery">
                         <div className="tab-content row h-100 d-flex justify-content-center align-items-center" id="myTabContent">
                             <div className="tab-pane fade show active col-lg-12" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <img className="img-fluid" src="https://pbs.twimg.com/media/ENktSOKU0AA9Y-6.jpg" alt=""/>
+                                <img className="img-fluid" src={`../images/${product.image}`} alt=""/>
                             </div>
                         </div>
                     </div>
