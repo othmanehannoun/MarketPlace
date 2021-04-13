@@ -15,8 +15,9 @@ class Menu extends Component{
             </div>
             <div className="sideBarre__menu">
                   <ul>
-                      <li><i class="fas fa-user-shield"></i> <Link className="navbar-brand" to="/superAdmin/GstAdmin">Gestion Admin</Link></li>
+                      <li><i class="fas fa-user-shield"></i> <Link className="navbar-brand" to="/superAdmin">Gestion Admin</Link></li>
                       <li><i class="fas fa-address-card"></i> <Link className="navbar-brand" to="/superAdmin/GstSeller">Gestion Seller</Link></li>
+                      <li><i class="fas fa-plus"></i> <Link className="navbar-brand" to="/superAdmin/Add-New-Admin">Add Admin</Link></li>
                       <li><i class="fas fa-sign-out-alt"></i> <Link className="navbar-brand" to="/">Logout</Link></li>
                   </ul>
             </div>

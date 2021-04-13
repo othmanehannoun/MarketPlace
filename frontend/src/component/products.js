@@ -8,6 +8,9 @@ function Product (){
 
   const [products, setProducts] = useState([]);
   useEffect(() =>{
+
+
+    
     const fetchDate = async () =>{
       await axios.get('http://localhost:4000/products/AllProducts')
       .then(res=>{
@@ -35,7 +38,7 @@ function Product (){
                           <div className="card-image">
                               {/* <span className="card-notify-badge">{product.name}</span> */}
                               <span className="card-notify-year">-20%</span>
-                              <img className="img-fluid" src={`images/${product.image}`} alt="" />
+                              <img height='250px' width='100%' src={product.img} alt="" />
                           </div>
               
                           <div className="card-body">

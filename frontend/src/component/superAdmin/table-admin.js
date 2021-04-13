@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import NavbarDashbord from '../NavbarDash'
 
 
 
@@ -24,7 +25,7 @@ function Admin (){
     return(
         
             <div className="mainContent">
-                   <nav> </nav>
+                   <NavbarDashbord />
 
                     <div className="boxContent">
                      <div className="firstRow">

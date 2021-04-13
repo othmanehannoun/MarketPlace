@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useHistory} from 'react-router-dom';
 import axios from 'axios'
+import NavbarDashbord from '../NavbarDash'
 
 
 
@@ -28,16 +29,18 @@ function GestSeller (){
     const acceptSeller = id  =>{
       axios.patch('http://localhost:4000/seller/valid/' + id)
         .then(res=>{
-          alert('Seller validate ')
           history.push('/superAdmin/GstSeller')
+          alert('Seller validate ')
+          
           
       }).catch(err => console.log(err))
+
   }
 
     return(
         
             <div className="mainContent">
-                   <nav> </nav>
+                   <NavbarDashbord />
 
                     <div className="boxContent">
                      <div className="firstRow">

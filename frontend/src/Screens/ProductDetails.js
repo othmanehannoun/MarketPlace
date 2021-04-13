@@ -51,7 +51,7 @@ function ProductDetails({match},props){
                     <div className="col-lg-4 text-center border-right border-secondery">
                         <div className="tab-content row h-100 d-flex justify-content-center align-items-center" id="myTabContent">
                             <div className="tab-pane fade show active col-lg-12" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                <img className="img-fluid" src={`../images/${product.image}`} alt=""/>
+                                <img className="img-fluid" src={product.img} alt=""/>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ function ProductDetails({match},props){
                             </tr>
                         </table>
 
-                        {product.countInStock > 0 && <button onClick={() => addToCartHandler()} className="add-to-card">
+                        {product.countInStock > 0 && <button onClick={() => addToCartHandler()} className="button">
                                            Add to cart
                                             </button>
                         }

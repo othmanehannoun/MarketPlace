@@ -115,7 +115,7 @@ body {
         font-size: 14px;
 
     }
-    .add-to-card {
+    .button {
         padding: 6px;
         width: 100%;
         background: #f2d900;
@@ -126,7 +126,7 @@ body {
         margin-top: 20px;
         
     }
-    .add-to-card:hover{
+    .button:hover{
         background: #ffff;
         color: #000;
         border: #000 solid;

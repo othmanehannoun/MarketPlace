@@ -19,6 +19,10 @@ const ProductsSchema = mongoose.Schema({
         type: Number,
         required: true,
       },
+    catName:{
+        type: mongoose.Schema.Types.ObjectId,
+      require: true
+    },
     id_seller : {
         type: mongoose.Schema.Types.ObjectId,
         require: true

@@ -1,13 +1,14 @@
 import React from 'react'
 import Menu from '../../component/seller/MenuSeller'
-import GestionProducts from '../../component/seller/Products'
+import Statistics from '../../component/seller/Statistics'
+
 
 
 function sellerDashbord (){
       return(
         <div className="">
              <Menu />
-             <GestionProducts />
+             <Statistics />
           </div>
         )
     

@@ -14,5 +14,7 @@ router.get('/getAllSeller', SellerCtrl.getAllSeller);
 
 router.patch('/valid/:id', SellerCtrl.validSeller);
 
+router.get('/logout', SellerCtrl.sellerSignout)
+
 
 module.exports = router;

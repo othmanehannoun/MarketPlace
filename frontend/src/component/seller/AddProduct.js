@@ -1,39 +1,80 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import {useHistory} from 'react-router-dom'
-import { Formik, Field, Form } from "formik";
 import axios from 'axios'
+import NavbarDashbord from '../NavbarDash'
 
-
-
-function addPrt (){
-    const history = useHistory()
-    let id =JSON.parse(localStorage.getItem("seller")) ;
-    const id_seller = id._id
-
-    const initialValues = {name : '', price: '', description: '', countInStock: '', id_seller : id_seller}
+function addPrt (props){
   
-    const onSubmit = (data) =>{
-        console.log(data)
-        axios.post(`http://localhost:4000/products/AddProduct`, data)
+  let id =JSON.parse(localStorage.getItem("seller")) ;
+  const id_seller = id._id
+  console.log(id_seller)
 
-        .then(res =>{
-         history.push('/seller-dashbord')
-        })
-        .catch(err=>{
-       console.log(err.message)
-        })
+    const history = useHistory()
 
+    const [categorys, setCategorys] = useState([]);
+    useEffect(() =>{
+      const fetchDate = async () =>{
+        await axios.get('http://localhost:4000/allcategory')
+        .then(res=>{
+          setCategorys(
+            res.data.categorys
+         )
+        }).catch(err=>{console.log(err)})
+      } 
+      fetchDate();
+      return () =>{
+          
+      }
+    }, [])
+    
+    const [selectFile , setSelectFile] = useState(null)
+
+    const [product, setProduct] = useState({
+      name: "",
+      catName:"",
+      price: "",
+      description: "",
+      countInStock: "",
+      id_seller : id_seller,
+      img: ""
+    })
+
+    const handleChange = (e) => {
+      setProduct({...product, [e.target.id]: e.target.value})
     }
+
+    const onSubmitForm = async (e) => {
+      e.preventDefault();
+
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      }
+
+      const formData = new FormData()
+      formData.append("name", product.name)
+      formData.append("catName", product.catName)
+      formData.append("price", product.price)
+      formData.append("description", product.description)
+      formData.append("countInStock", product.countInStock)
+      formData.append("id_seller", product.id_seller)
+      formData.append("img", selectFile)
+
+      await axios.post(`http://localhost:4000/products/AddProduct`, formData, config)
+      .then(res =>{
+        history.push('/Gestion-products')
+        alert('product added')
+      })
+      .catch(err=>{
+        console.log(err.message)
+      })
+    }
+
      
     return(
-
-        <Formik
-        initialValues = {initialValues}
-        onSubmit = {onSubmit}
-      >
-        
-            <div className="mainContent">
-                   <nav> </nav>
+               <div className="mainContent">
+                   <NavbarDashbord />
 
                     <div className="boxContent">
                      <div className="firstRow">
@@ -45,27 +86,41 @@ function addPrt (){
                         <h2 style={{marginBottom:'40px'}}>ADD PRODUCT</h2>
 
                       </div>
-                      <Form id="Login">
+                      <form onSubmit={onSubmitForm}>
                         <div className="form-group">
-                          <Field type="text" name="name" className="form-control" placeholder="Product Name" />
+                          <input type="text" name="name" id="name" onChange={handleChange} className="form-control" placeholder="Product Name" />
                         </div>
                         <div className="form-group">
-                          <Field type="text" name="price" className="form-control" placeholder="Product Price" />
+                          <select name="catName" id="catName" onChange={handleChange} className="form-control">
+                          {
+                              categorys.map(cat=>(
+
+                                <option value={cat._id} key={cat._id}>{cat.catName}</option>
+
+                                ))
+                          }
+                            </select>
                         </div>
                         <div className="form-group">
-                          <Field type="text" name="description" className="form-control" placeholder="Description" />
+                          <input type="text" name="price" id="price" onChange={handleChange} className="form-control" placeholder="Product Price" />
+                        </div>
+                        <div className="form-group">
+                          <input type="text" name="description" id="description" onChange={handleChange} className="form-control" placeholder="Description" />
                         </div>
                        
                         <div className="form-group">
-                          <Field type="number" name="countInStock" className="form-control" placeholder="Quantity" />
+                          <input type="number" name="countInStock" id="countInStock" onChange={handleChange} className="form-control" placeholder="Quantity" />
                         </div>
                         <div className="form-group">
-                          <Field type="file" name="image" className="form-control" />
+                          <input type="file" name="img" id="img" onChange={(e) => setSelectFile(e.target.files[0])} className="form-control" />
+                          {/* <input type="file" name="img" id="img" onChange={handleChange} className="form-control" /> */}
                         </div>
 
-                        <Field type="submit" className="btn btn-primary" value="Add" />
+                        <input type="submit" className="button" value="Add" />
+
+                        {/* { JSON.stringify(user) } */}
                      
-                      </Form>
+                      </form>
                     </div>
                  
                   </div>
@@ -74,7 +129,7 @@ function addPrt (){
                     </div>
                     </div>
             </div>
-            </Formik>
+     
     )
 }
 

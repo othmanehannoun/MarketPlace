@@ -1,9 +1,10 @@
+const {data} = require('joi')
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt')
+
 
 
 const userSchema = new mongoose.Schema({
-    name:{
+    full_name:{
         type: String,
         require: true
     },
@@ -11,18 +12,20 @@ const userSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    phone: {
+        type: String,
+        require: true
+    },
     password: {
         type: String,
         require: true
     },
-    role: {
-        type: Number,
-        default: 0
+    address:{
+        type: String,
+        require: true
     },
-    cart:{
-        type: Array,
-        default: []
-    }
+  
+
 },{
     timestamps: true
 })

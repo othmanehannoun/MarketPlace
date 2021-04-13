@@ -1,8 +1,11 @@
 import axios from 'axios'
 import {useHistory} from 'react-router-dom'
 import React, {useState} from 'react'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import '../../css/seller-sinup.css'
 
+toast.configure()
 
 function FormLogin (){
 
@@ -10,8 +13,6 @@ function FormLogin (){
 
     const [email, setLogin] = useState();
     const [password, setPassword] = useState();
-
-
 
     const handleSubmit = (e) => {
 		e.preventDefault();
@@ -22,10 +23,10 @@ function FormLogin (){
 		.then(res => {
         if(res.data.message == 'Your account is still being processed'){
 
-            alert('Your account is still being processed')
+            toast.error('Your account is still being processed')
 
         }else if(res.data.message == 'email or password incorrect') {
-          alert('email or password incorrect')
+          toast.error('email or password incorrect')
         }
 
         else{
@@ -39,7 +40,7 @@ function FormLogin (){
         }
         })
         .catch(err => {
-         
+          toast.error('email or password incorrect')
       })
     }
 
@@ -72,7 +73,15 @@ function FormLogin (){
                            />
                         </div>
                        
-                        <input type="submit" className="btn btn-primary" value="Login" />
+                        <input type="submit" className="button" value="Login" 
+                        style={{marginBottom: '20px'}}/>
+
+                        <div className="link">
+                          <a className="float-left" href="/login">
+                          <i className="fas fa-arrow-circle-left"></i>
+                          </a>
+                          <a  className="float-right" href="/seller-sinup">SELLER SINUP</a>
+                        </div>
                       </form>
                     </div>
                  

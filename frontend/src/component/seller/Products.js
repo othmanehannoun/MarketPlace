@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import NavbarDashbord from '../NavbarDash'
 
 
 
@@ -27,12 +28,12 @@ function GestionProducts (){
     return(
         
             <div className="mainContent">
-                   <nav> </nav>
+                   <NavbarDashbord />
 
                     <div className="boxContent">
                      <div className="firstRow">
                       <div className="container"> 
-
+          
                       <table className="table table-striped " style={{width: '95%'}}>
                         <thead>
                             <tr>
@@ -50,7 +51,7 @@ function GestionProducts (){
                                   sellerProducts.map(product=>{
                                       return(
                                         <tr>
-                                        <td><img src="images/1.jpg" width="100vh" alt=""/></td>
+                                        <td><img src={product.img} width="100vh" alt=""/></td>
                                         <td >{product.name}</td>
                                         <td >{product.description}</td>
                                         <td >{product.price}$</td>

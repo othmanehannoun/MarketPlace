@@ -1,6 +1,6 @@
-const { string } = require("joi");
+const {data} = require('joi')
 const mongoose = require("mongoose");
-// const {randomPassword} = require('../controllers/methodController')
+
 
 const sellerSchema = new mongoose.Schema(
   {
@@ -14,6 +14,7 @@ const sellerSchema = new mongoose.Schema(
     },
     type: {
       type: String,
+
     },
     email: {
       type: String,

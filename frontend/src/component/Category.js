@@ -1,29 +1,49 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import axios from 'axios'
 
 
 
-class Category extends Component{
-    render(){
+function Category (props){
+
+  const [categorys, setCategorys] = useState([]);
+  useEffect(() =>{
+    const fetchDate = async () =>{
+      await axios.get('http://localhost:4000/allcategory')
+      .then(res=>{
+        setCategorys(
+          res.data.categorys
+       )
+      }).catch(err=>{console.log(err)})
+    } 
+    fetchDate();
+    return () =>{
+        
+    }
+  }, [])
+
+  let handlClick = async(id)=>{
+   
+  }
+   
         return(
           <div className="col-md-4 ">
           <div className="list-group ">
                <span className="list-group-item list-group-item-action active">Ferch by Category</span>
-               <Link to="#" className="list-group-item list-group-item-action">User Management</Link>
-               <Link to="#" className="list-group-item list-group-item-action">Used</Link>
-               <Link to="#" className="list-group-item list-group-item-action">Enquiry</Link>
-               <Link to="#" className="list-group-item list-group-item-action">Dealer</Link>
-               <Link to="#" className="list-group-item list-group-item-action">Media</Link>
-               <Link to="#" className="list-group-item list-group-item-action">Post</Link>
-               <Link to="#" className="list-group-item list-group-item-action">Category</Link>
-               <Link to="#" class="list-group-item list-group-item-action">Dealer</Link>
-               <Link to="#" class="list-group-item list-group-item-action">Media</Link>
+              {
+                 categorys.map((category)=>{
+                  return(
+                   <Link to={'/products/'+category._id} className="list-group-item list-group-item-action">{category.catName}</Link>
+                  )
+                })
+              }
              
-            
              </div> 
+           
      </div>
+     
         )
-    }
+   
 }
 
 

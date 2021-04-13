@@ -17,13 +17,13 @@ class Slide extends Component{
             </ol>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                <img src="/images/mg1.jpeg" className="d-block w-100" alt="..." />
+                <img src="/images/slide1.jpg" height='440vh' className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                <img src="/images/mg2.jpeg" className="d-block w-100" alt="..." />
+                <img src="/images/slide2.jpg" height='440vh' className="d-block w-100" alt="..." />
                 </div>
                 <div className="carousel-item">
-                <img src="/images/mg3.jpeg" className="d-block w-100" alt="..." />
+                <img src="/images/slide3.png" height='440vh' className="d-block w-100" alt="..." />
                 </div>
             </div>
           
